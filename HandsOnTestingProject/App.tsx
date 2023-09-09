@@ -25,15 +25,13 @@ import {
 
 type SectionProps = PropsWithChildren<{
   title: string;
-  testID?: string;
 }>;
 
-function Section({children, title, testID}: SectionProps): JSX.Element {
+function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View testID={testID} style={styles.sectionContainer}>
+    <View style={styles.sectionContainer}>
       <Text
-        testID={`sectionTitle${title}`}
         style={[
           styles.sectionTitle,
           {
@@ -43,7 +41,6 @@ function Section({children, title, testID}: SectionProps): JSX.Element {
         {title}
       </Text>
       <Text
-         testID={`sectionDescription${title}`}
         style={[
           styles.sectionDescription,
           {
@@ -70,33 +67,31 @@ function App(): JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView
-        testID='scrollViewContanier'
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
         <View
-          testID="sectionContainer"
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section testID="sectionItem1" title="Descubre">
+          <Section title="Descubre">
           <Text style={styles.highlight}>Aprende</Text>, conoce nuevas
           técnicas y actualízate en temas, herramientas y buenas prácticas 
           de Testing en distintos paths de carrera.
           </Section>
-          <Section testID="sectionItem2" title="Comparte">
+          <Section title="Comparte">
           En las salas de las charlas podrás compartir tus dudas y experiencias
           con el speaker y la comunidad.
           </Section>
-          <Section testID="sectionItem3" title="Diviertete">
+          <Section title="Diviertete">
           Participa, compite, muestra tus súper poderes. ¡Concursa por 
           premios y becas para potenciar tus habilidades!
           </Section>
-          <Section testID="sectionItem4" title="Explora">
+          <Section title="Explora">
           Conecta con nuevos retos profesionales. Habrá vacantes interesantes
           ya sea que quieras trabajar como freelance o por contrato indefinido. 
           </Section>
-         <Text testID= "sectionTalksTitle" style={styles.centeredTextTitle}>Charlas</Text>
+         <Text style={styles.centeredTextTitle}>Charlas</Text>
             <LearnMoreLinks />
         </View>
       </ScrollView>
